@@ -1,0 +1,106 @@
+\documentclass[review]{siamart0516}   % Use [final] when ready.
+
+\usepackage{siampaper}
+\usepackage{draftwatermark}
+\SetWatermarkScale{8}
+\SetWatermarkLightness{.97}
+
+% For the Cahier du GERAD.
+%\renewcommand{\year}{2020}     % If you don't want the current year.
+\newcommand{\cahiernumber}{00}  % Insert your Cahier du GERAD number.
+
+% For debugging.
+%\usepackage{showframe}
+
+% Meta-information for the PDF file generated.
+\pdfinfo{/Author (Dominique Orban)
+         /Title (Insert Title Here)
+         /Keywords (keyword1, keyword2, keyword3)}
+
+\title{
+  Bounds on Eigenvalues of Matrices Arising from Interior-Point Methods%
+}
+
+\author{
+  Chen Greif%
+  \thanks{%
+    Department of Computer Science,
+    The University of British Columbia,
+    Vancouver, BC, Canada.
+    E-mail: \mailto{greif@cs.ubc.ca}.
+    Research partially supported by an NSERC Discovery Grant.
+  }
+  \and
+  Erin Moulding%
+  \thanks{%
+    Department of Mathematics,
+    The University of British Columbia,
+    Vancouver, BC, Canada.
+    E-mail: \mailto{moulding@math.ubc.ca}.
+    Research partially supported by an NSERC CGS M Scholarship.
+  }
+  \and
+  Dominique Orban%
+  \thanks{%
+    GERAD and Department of Mathematics and Industrial Engineering,
+    \'Ecole Polytechnique, Montr\'eal, QC, Canada.
+    E-mail: \mailto{dominique.orban@gerad.ca}.
+    Research partially supported by an NSERC Discovery Grant.
+  }
+}
+\date{\today}
+
+\begin{document}
+
+  \linenumbers
+  \maketitle
+
+  \thispagestyle{firstpage}
+  \pagestyle{myheadings}
+
+  \begin{abstract}
+    Insert abstract here. \smarttodo{Write abstract}
+  \end{abstract}
+
+  \begin{keywords}
+    Keyword1, keyword2, keyword3
+  \end{keywords}
+
+  \begin{AMS}
+    15A06,  % Linear equations
+    65F10,  % Iterative methods for linear systems
+    65F20,  % Overdetermined systems, pseudoinverses
+    65F22,  % Ill-posedness, regularization
+    65F25,  % Orthogonalization
+    65F35,  % Matrix norms, conditioning, scaling
+    65F50,  % Sparse matrices
+    93E24   % Least squares and related methods
+    90C06,  % Large-scale problems
+    90C20,  % Quadratic programming
+    90C30,  % Nonlinear programming
+    90C51,  % Interior-point methods
+    90C53,  % Methods of quasi-Newton type
+    90C55   % Methods of successive quadratic programming type
+  \end{AMS}
+
+  \tableofcontents
+  \listoftodos\relax
+
+  \section{Introduction}
+
+  This is the introduction. An optimization problem has the general form
+  \begin{equation}
+    \label{eq:opt-problem}
+    \minimize{x \in \R^n} \ f(x) \quad \st \ \ell \leq c(x) \leq u.
+  \end{equation}
+
+  For the real stuff, check \cite{wright-orban-2002}.
+
+  \section{Conclusion}
+
+  Conclusions will come in due time. \smarttodo{Come up with witty conclusions}
+
+  \bibliographystyle{abbrvnat}
+  \bibliography{abbrv,\jobname}
+
+\end{document}

@@ -35,7 +35,7 @@ jobs:
           latexmk_shell_escape: true
           pre_compile: "pwd && ls -l"
         env:
-          TEXINPUTS: .:latex-styles-master/styles:siam
+          TEXINPUTS: .:$GITHUB_WORKSPACE/latex-styles-master/styles:$GITHUB_WORKSPACE/siam
       - name: Upload PDF
         uses: actions/upload-artifact@v2
         with:

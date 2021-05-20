@@ -27,6 +27,7 @@ jobs:
           root_file: paper-latex-action.tex
           working_directory: paper
           latexmk_shell_escape: true
+          pre_compile: "echo TEXINPUTS => $TEXINPUTS"
         env:
           TEXINPUTS: .:${{ github.workspace }}/latex-styles-master/styles:${{ github.workspace }}
       - name: Upload PDF

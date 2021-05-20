@@ -1,0 +1,15 @@
+\usepackage[%
+		shash={f55c25d},
+		lhash={f55c25d6ccd2f9e3b02a8d5c7e0b7ce3a08c3421},
+		authname={Dominique Orban},
+		authemail={dominique.orban@gmail.com},
+		authsdate={2021-05-20},
+		authidate={2021-05-20 18:32:59 -0400},
+		authudate={1621549979},
+		commname={Dominique Orban},
+		commemail={dominique.orban@gmail.com},
+		commsdate={2021-05-20},
+		commidate={2021-05-20 18:32:59 -0400},
+		commudate={1621549979},
+		refnames={ (HEAD -> master)}
+	]{gitsetinfo}

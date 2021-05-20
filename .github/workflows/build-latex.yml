@@ -1,0 +1,43 @@
+name: Build LaTeX document
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Download LaTeX styles
+        run: |
+          curl -OL https://github.com/dpo/latex-styles/archive/refs/heads/master.zip
+          curl -OL https://www.siam.org/Portals/0/Macros/Standard/siamart_190516.zip
+      - name: Decompress LaTeX style files
+        uses: TonyBogdanov/zip@1.0
+        with:
+          args: unzip -qq ./master.zip
+      - name: Decompress SIAM style files
+        uses: TonyBogdanov/zip@1.0
+        with:
+          args: unzip -qq ./siamart_190516.zip -d siam
+      - name: Look around
+        run: |
+          pwd && ls
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: paper-latex-action.tex
+          working_directory: paper
+          latexmk_shell_escape: true
+          pre_compile: "pwd && ls -l"
+        env:
+          TEXINPUTS: latex-styles-master/styles:siam
+      - name: Upload PDF
+        uses: actions/upload-artifact@v2
+        with:
+          name: PDF
+          path: paper/paper-latex-action.pdf

@@ -28,7 +28,7 @@ jobs:
           working_directory: paper
           latexmk_shell_escape: true
         env:
-          TEXINPUTS: .:${{ github.workspace }}/latex-styles-master/styles:${{ github.workspace }}/siam
+          TEXINPUTS: .:${{ github.workspace }}/latex-styles-master/styles:${{ github.workspace }}
       - name: Upload PDF
         uses: actions/upload-artifact@v2
         with:

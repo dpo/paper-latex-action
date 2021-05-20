@@ -19,11 +19,11 @@ jobs:
       - name: Decompress LaTeX style files
         uses: TonyBogdanov/zip@1.0
         with:
-          args: unzip -qq ./master.zip
+          args: unzip -qq ./master.zip -d ${{ github.workspace }}/latex-styles
       - name: Decompress SIAM style files
         uses: TonyBogdanov/zip@1.0
         with:
-          args: unzip -qq ./siamart_190516.zip -d siam
+          args: unzip -qq ./siamart_190516.zip -d ${{ github.workspace }}/siam
       - name: Look around
         run: |
           pwd && ls
@@ -33,9 +33,9 @@ jobs:
           root_file: paper-latex-action.tex
           working_directory: paper
           latexmk_shell_escape: true
-          pre_compile: "pwd && ls -l && echo $TEXINPUTS && echo ${{ github.workspace }}"
+          pre_compile: "pwd && ls -l && echo $TEXINPUTS && echo ${{ github.workspace }} && ls -l ${{ github.workspace }}"
         env:
-          TEXINPUTS: .:/home/runner/work/paper-latex-action/paper-latex-action/latex-styles-master/styles:/home/runner/work/paper-latex-action/paper-latex-action/siam
+          TEXINPUTS: .:${{ github.workspace }}/latex-styles/styles:${{ github.workspace }}/siam
       - name: Upload PDF
         uses: actions/upload-artifact@v2
         with:

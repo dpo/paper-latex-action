@@ -16,6 +16,7 @@ jobs:
         run: |
           curl -OL https://github.com/dpo/latex-styles/archive/refs/heads/master.zip
           curl -OL https://www.siam.org/Portals/0/Macros/Standard/siamart_190516.zip
+          mkdir -p ${{ github.workspace }}/latex-styles-master
           mkdir -p ${{ github.workspace }}/siam
       - name: Decompress LaTeX style files
         uses: TonyBogdanov/zip@1.0

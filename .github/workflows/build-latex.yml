@@ -33,7 +33,7 @@ jobs:
           root_file: paper-latex-action.tex
           working_directory: paper
           latexmk_shell_escape: true
-          pre_compile: "pwd && ls -l"
+          pre_compile: "pwd && ls -l && echo $TEXINPUTS && echo ${{ github.workspace }}"
         env:
           TEXINPUTS: .:/home/runner/work/paper-latex-action/paper-latex-action/latex-styles-master/styles:/home/runner/work/paper-latex-action/paper-latex-action/siam
       - name: Upload PDF

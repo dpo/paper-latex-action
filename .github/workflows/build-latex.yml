@@ -16,10 +16,11 @@ jobs:
         run: |
           curl -OL https://github.com/dpo/latex-styles/archive/refs/heads/master.zip
           curl -OL https://www.siam.org/Portals/0/Macros/Standard/siamart_190516.zip
+          mkdir -p ${{ github.workspace }}/siam
       - name: Decompress LaTeX style files
         uses: TonyBogdanov/zip@1.0
         with:
-          args: unzip -qq ./master.zip -d ${{ github.workspace }}/latex-styles
+          args: unzip -qq ./master.zip -d ${{ github.workspace }}
       - name: Decompress SIAM style files
         uses: TonyBogdanov/zip@1.0
         with:
@@ -35,7 +36,7 @@ jobs:
           latexmk_shell_escape: true
           pre_compile: "pwd && ls -l && echo $TEXINPUTS && echo ${{ github.workspace }} && ls -l ${{ github.workspace }}"
         env:
-          TEXINPUTS: .:${{ github.workspace }}/latex-styles/styles:${{ github.workspace }}/siam
+          TEXINPUTS: .:${{ github.workspace }}/latex-styles-master/styles:${{ github.workspace }}/siam
       - name: Upload PDF
         uses: actions/upload-artifact@v2
         with:

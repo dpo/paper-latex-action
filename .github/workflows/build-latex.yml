@@ -20,14 +20,13 @@ jobs:
           unzip siamart_190516.zip
       - name: Look around
         run: |
-          pwd && ls && ls -R ${{ github.workspace }}
+          pwd && ls && echo "github.workspace = ${{ github.workspace }}" &&  ls -R ${{ github.workspace }}
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: paper-latex-action.tex
           working_directory: paper
           latexmk_shell_escape: true
-          pre_compile: "pwd && ls -l && echo $TEXINPUTS && echo ${{ github.workspace }} && ls -l ${{ github.workspace }}"
         env:
           TEXINPUTS: .:${{ github.workspace }}/latex-styles-master/styles:${{ github.workspace }}/siam
       - name: Upload PDF

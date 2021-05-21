@@ -23,7 +23,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: ${{ PAPER }}.tex
+          root_file: ${{ env.PAPER }}.tex
           working_directory: paper
           latexmk_shell_escape: true
         env:
@@ -32,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: PDF
-          path: paper/${{ PAPER }}.pdf
+          path: paper/${{ env.PAPER }}.pdf

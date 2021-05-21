@@ -29,7 +29,7 @@ jobs:
           latexmk_shell_escape: true
           pre_compile: "pwd && ls -l"
         env:
-          TEXINPUTS: .:siam-styles:latex-styles-master
+          TEXINPUTS: .:$PWD/../siam-styles:$PWD/../latex-styles-master
       - name: Upload PDF
         uses: actions/upload-artifact@v2
         with:

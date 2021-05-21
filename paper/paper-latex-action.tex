@@ -12,6 +12,32 @@
 % For debugging.
 %\usepackage{showframe}
 
+\graphicspath{{figs/}}  % path to figures
+\usepackage{tikzscale}
+\usetikzlibrary{external}
+\usetikzlibrary{backgrounds}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepgfplotslibrary{fillbetween}
+\tikzexternalize[prefix=./figs/]  % must compile with -shell-escape !
+
+% tikz-generated PDFs should have the same name as the source tikz file
+\tikzexternalize  % must compile with -shell-escape !
+\newcommand*{\includetikzgraphics}[2][]{%
+  \tikzsetnextfilename{#2}%
+  \includegraphics[#1]{#2.tikz}
+}
+% uncomment the following to simply include the generated PDFs
+% \newcommand*{\includetikzgraphics}[2][]{%
+%   \includegraphics[#1]{#2}
+% }
+
+% resolve a conflict between todonotes and \tikzexternalize
+% https://tex.stackexchange.com/questions/42486/todonotes-and-tikzexternalize
+\makeatletter
+\renewcommand{\todo}[2][]{\tikzexternaldisable\@todo[#1]{#2}\tikzexternalenable}
+\makeatother
+
 % Meta-information for the PDF file generated.
 \pdfinfo{/Author (Dominique Orban)
          /Title (Insert Title Here)
@@ -93,6 +119,12 @@
     \label{eq:opt-problem}
     \minimize{x \in \R^n} \ f(x) \quad \st \ \ell \leq c(x) \leq u.
   \end{equation}
+
+  \begin{figure}[p]
+    \centering
+    \includetikzgraphics[width=.49\linewidth]{xcomp}
+    \caption{Basis: \(h=\|\cdot\|_1\), \(\Delta\mathbb{B}_2\) \label{fig:bpdn_b2_x}}
+  \end{figure}
 
   For the real stuff, check \cite{wright-orban-2002}.
 

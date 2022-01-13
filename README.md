@@ -11,6 +11,18 @@
     git clone --template=latex-styles https://github.com:user/name_of_this_repo.git
     ```
 
+## Create an empty branch where PDF artifacts will be published
+
+An empty branch named `pdfs` must be pushed to the remote where PDF artifacts
+generated when submitting pull requests can be pushed:
+
+```bash
+git checkout --orphan pdfs
+git rm -rf .
+git commit --allow-empty -m "root commit"
+git push origin pdfs
+```
+
 ## Conventions
 
 1. Write clean LaTeX code:

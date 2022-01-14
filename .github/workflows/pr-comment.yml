@@ -14,6 +14,6 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-            prefix: "Here are the PDF and diff"
+            prefix: "Here is the compiled"
             format: "name"
             addTo: "pull"
